@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Inline: 'js' klassi qo'shiladi — CSS opacity:0 ni faqat shu bilan cheklaydi -->
+  <script>document.documentElement.classList.add('js');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlantAI — Агроном в вашем кармане</title>
+  <meta name="description" content="PlantAI определяет болезнь растения по фото листа за секунды и подсказывает, что делать дальше. 96,97% точность, 14 культур, 38 классов болезней." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PlantAI — Агроном в вашем кармане" />
+  <meta property="og:description" content="PlantAI определяет болезнь растения по фото листа за секунды и подсказывает, что делать дальше. 96,97% точность, 14 культур, 38 классов." />
+  <meta property="og:image" content="/assets/og-image.png" />
+  <meta property="og:locale" content="ru_RU" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PlantAI — Агроном в вашем кармане" />
+  <meta name="twitter:description" content="PlantAI определяет болезнь растения по фото листа за секунды и подсказывает, что делать дальше." />
+  <meta name="twitter:image" content="/assets/og-image.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="logo" aria-label="PlantAI — на главную">
+        <svg class="logo__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 4C16 4 7 10 7 18a9 9 0 0018 0C25 10 16 4 16 4z" fill="#1E7A46"/>
+          <path d="M16 4C16 4 16 14 16 22" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M16 12C16 12 20 9 23 11" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M16 17C16 17 12 14 9 16" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="logo__text">PlantAI</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="mainNav" aria-label="Основная навигация">
+        <ul class="nav__list" role="list">
+          <li><a class="nav__link" href="#problem">Проблема</a></li>
+          <li><a class="nav__link" href="#how">Как работает</a></li>
+          <li><a class="nav__link" href="#results">Результаты</a></li>
+          <li><a class="nav__link" href="#market">Рынок</a></li>
+          <li><a class="nav__link" href="#team">Команда</a></li>
+          <li><a class="nav__link" href="#invest">Инвестиции</a></li>
+        </ul>
+      </nav>
+
+      <a href="#contact" class="btn btn--primary header__cta">Связаться</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="hero__badge">Инвестиционное предложение 2026</div>
+          <h1 class="hero__title" id="heroTitle">Агроном<br>в вашем кармане</h1>
+          <p class="hero__sub">
+            PlantAI определяет болезнь растения по фото листа за секунды
+            и подсказывает, что делать дальше.
+          </p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary">Связаться с командой</a>
+            <a href="#invest" class="btn btn--ghost">Инвестиционное предложение</a>
+          </div>
+
+          <div class="hero__stats" role="list" aria-label="Ключевые показатели">
+            <div class="stat" role="listitem">
+              <span class="stat__num">14</span>
+              <span class="stat__label">культур</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat__num">38</span>
+              <span class="stat__label">классов болезней</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat__num">96,97%</span>
+              <span class="stat__label">точность</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat__num">4</span>
+              <span class="stat__label">языка</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <!-- Leaf scan SVG -->
+          <svg class="leaf-scan" viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Glow -->
+            <ellipse cx="160" cy="290" rx="100" ry="20" fill="#1E7A46" opacity="0.12"/>
+            <!-- Leaf main shape -->
+            <path class="leaf-shape" d="M160 40
+              C160 40 90 80 75 150
+              C60 220 100 300 160 320
+              C220 300 260 220 245 150
+              C230 80 160 40 160 40Z"
+              fill="#1E7A46" opacity="0.15" stroke="#1E7A46" stroke-width="2"/>
+            <!-- Leaf inner fill -->
+            <path d="M160 55
+              C160 55 95 90 82 155
+              C69 220 106 295 160 310
+              C214 295 251 220 238 155
+              C225 90 160 55 160 55Z"
+              fill="#3DBE6A" opacity="0.18"/>
+            <!-- Midrib -->
+            <path class="leaf-vein" d="M160 55 C160 55 160 180 160 310" stroke="#1E7A46" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Left veins -->
+            <path class="leaf-vein" d="M160 120 C140 110 115 108 95 115" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <path class="leaf-vein" d="M160 160 C138 145 112 143 90 150" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <path class="leaf-vein" d="M160 200 C140 185 115 183 95 188" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <path class="leaf-vein" d="M160 240 C142 228 120 228 105 235" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <!-- Right veins -->
+            <path class="leaf-vein" d="M160 120 C180 110 205 108 225 115" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <path class="leaf-vein" d="M160 160 C182 145 208 143 230 150" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <path class="leaf-vein" d="M160 200 C180 185 205 183 225 188" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+            <path class="leaf-vein" d="M160 240 C178 228 200 228 215 235" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+            <!-- Scan line -->
+            <g class="scan-group">
+              <rect class="scan-line" x="70" y="170" width="180" height="3" rx="1.5" fill="#3DBE6A" opacity="0.9"/>
+              <rect x="70" y="170" width="180" height="40" rx="2" fill="url(#scanGrad)" opacity="0.3"/>
+            </g>
+
+            <!-- Corner brackets -->
+            <path d="M75 60 L75 45 L90 45" stroke="#3DBE6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M245 60 L245 45 L230 45" stroke="#3DBE6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M75 300 L75 315 L90 315" stroke="#3DBE6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M245 300 L245 315 L230 315" stroke="#3DBE6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Analysis label -->
+            <rect x="185" y="155" width="120" height="32" rx="8" fill="#14233B" opacity="0.85"/>
+            <text x="193" y="166" fill="#3DBE6A" font-size="8" font-family="monospace" font-weight="600">АНАЛИЗ...</text>
+            <text x="193" y="178" fill="#FBFCF8" font-size="9" font-family="monospace">96,97% точность</text>
+
+            <defs>
+              <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3DBE6A"/>
+                <stop offset="100%" stop-color="#3DBE6A" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <span>Листайте вниз</span>
+        <svg width="16" height="24" viewBox="0 0 16 24"><path d="M8 2v20M2 16l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </section>
+
+    <!-- ===== PROBLEM ===== -->
+    <section class="section problem" id="problem" aria-labelledby="problemTitle">
+      <div class="container">
+        <div class="section-label">Проблема</div>
+        <h2 class="section-title" id="problemTitle">Болезнь приходит<br>быстрее агронома</h2>
+
+        <div class="problem__main">
+          <div class="problem__big-stat">
+            <span class="big-num">40%</span>
+            <p>мирового урожая гибнет<br>от вредителей и болезней</p>
+            <cite class="problem__source">— FAO</cite>
+          </div>
+
+          <ul class="problem__list" role="list">
+            <li class="problem__item">
+              <div class="problem__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#E05252" stroke-width="1.5"/><path d="M14 8v7l4 3" stroke="#E05252" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <strong>Агроном далеко</strong>
+                <p>Ожидание консультации 2–3 дня, пока болезнь распространяется по полю.</p>
+              </div>
+            </li>
+            <li class="problem__item">
+              <div class="problem__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#E05252" stroke-width="1.5"/><path d="M9 14h10M14 9l5 5-5 5" stroke="#E05252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <strong>Лечение наугад</strong>
+                <p>Без точного диагноза фермеры применяют неподходящие препараты, тратя деньги впустую.</p>
+              </div>
+            </li>
+            <li class="problem__item">
+              <div class="problem__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#E05252" stroke-width="1.5"/><path d="M14 8v8M11 19h6" stroke="#E05252" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <strong>Потерянный урожай — годовой доход семьи</strong>
+                <p>Для малых хозяйств одна вспышка болезни означает финансовую катастрофу.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <blockquote class="problem__quote">
+          «Проблема не в том, что болезнь нельзя вылечить.<br>
+          Проблема в том, что её <mark>никто не распознаёт вовремя</mark>.»
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section how" id="how" aria-labelledby="howTitle">
+      <div class="container">
+        <div class="section-label">Как работает</div>
+        <h2 class="section-title" id="howTitle">Четыре шага<br>до диагноза</h2>
+
+        <ol class="how__steps" role="list">
+          <li class="how__step">
+            <div class="how__step-num" aria-hidden="true">01</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="8" y="6" width="24" height="28" rx="4" stroke="#1E7A46" stroke-width="1.5"/>
+                <circle cx="20" cy="22" r="7" stroke="#3DBE6A" stroke-width="1.5"/>
+                <circle cx="20" cy="22" r="3" fill="#3DBE6A" opacity="0.4"/>
+                <path d="M20 6v4M8 16H4M36 16h-4" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Фото листа</h3>
+            <p class="how__step-desc">Фермер фотографирует поражённый лист прямо в поле — через мобильное приложение.</p>
+          </li>
+
+          <div class="how__arrow" aria-hidden="true">
+            <svg width="32" height="16" viewBox="0 0 32 16"><path d="M0 8h28M24 2l6 6-6 6" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <li class="how__step">
+            <div class="how__step-num" aria-hidden="true">02</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="4" y="8" width="32" height="24" rx="4" stroke="#1E7A46" stroke-width="1.5"/>
+                <path d="M12 20h6l3-6 4 12 3-6h4" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">ИИ-анализ</h3>
+            <p class="how__step-desc">Нейросеть анализирует изображение и сравнивает его с 8 129 обученными образцами.</p>
+          </li>
+
+          <div class="how__arrow" aria-hidden="true">
+            <svg width="32" height="16" viewBox="0 0 32 16"><path d="M0 8h28M24 2l6 6-6 6" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <li class="how__step">
+            <div class="how__step-num" aria-hidden="true">03</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="14" stroke="#1E7A46" stroke-width="1.5"/>
+                <path d="M20 6v3M20 31v3M6 20H9M31 20h3" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round"/>
+                <text x="20" y="24" text-anchor="middle" fill="#3DBE6A" font-size="10" font-weight="600" font-family="monospace">97%</text>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Диагноз + % уверенности</h3>
+            <p class="how__step-desc">Система называет болезнь и показывает уровень уверенности в диагнозе.</p>
+          </li>
+
+          <div class="how__arrow" aria-hidden="true">
+            <svg width="32" height="16" viewBox="0 0 32 16"><path d="M0 8h28M24 2l6 6-6 6" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <li class="how__step">
+            <div class="how__step-num" aria-hidden="true">04</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M8 12h24M8 20h16M8 28h10" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="30" cy="28" r="7" fill="#3DBE6A" opacity="0.2" stroke="#3DBE6A" stroke-width="1.5"/>
+                <path d="M27 28l2 2 4-4" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Рекомендация</h3>
+            <p class="how__step-desc">Конкретная инструкция по лечению на 4 языках — без агронома, прямо сейчас.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== RESULTS ===== -->
+    <section class="section results" id="results" aria-labelledby="resultsTitle">
+      <div class="container">
+        <div class="section-label">Результаты</div>
+        <h2 class="section-title" id="resultsTitle">Рабочая модель.<br>Измеримые результаты.</h2>
+
+        <div class="results__grid">
+          <div class="result-card result-card--accent">
+            <div class="result-card__num">96,97%</div>
+            <div class="result-card__label">точность модели</div>
+            <div class="result-card__sub">на 8 129 тестовых фотографиях</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card__num">14</div>
+            <div class="result-card__label">культур</div>
+            <div class="result-card__sub">томат, картофель, кукуруза и другие</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card__num">38</div>
+            <div class="result-card__label">классов болезней</div>
+            <div class="result-card__sub">включая «здоровое растение»</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card__num">4</div>
+            <div class="result-card__label">языка</div>
+            <div class="result-card__sub">рус / узб / қаз / eng</div>
+          </div>
+        </div>
+
+        <div class="results__indev">
+          <div class="indev__badge">В разработке</div>
+          <p>
+            <strong>39-й класс «Не лист»</strong> — фильтр некорректных фотографий.
+            Набор данных: <strong>3 661 изображение</strong>. Предотвращает ложные диагнозы при неправильных снимках.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MARKET ===== -->
+    <section class="section market" id="market" aria-labelledby="marketTitle">
+      <div class="container">
+        <div class="section-label">Рынок</div>
+        <h2 class="section-title" id="marketTitle">Узбекистан:<br>огромный и незанятый</h2>
+
+        <div class="market__inner">
+          <!-- Nested circles SVG -->
+          <figure class="market__diagram" aria-label="Диаграмма объёмов рынка">
+            <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tamLabel">
+              <title id="tamLabel">TAM, SAM, SOM — вложенные круги рынка</title>
+              <!-- TAM -->
+              <circle cx="210" cy="210" r="195" fill="#1E7A46" opacity="0.08" stroke="#1E7A46" stroke-width="1.5" stroke-dasharray="6 4"/>
+              <!-- SAM -->
+              <circle cx="210" cy="210" r="135" fill="#1E7A46" opacity="0.12" stroke="#1E7A46" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <!-- SOM -->
+              <circle cx="210" cy="210" r="68" fill="#3DBE6A" opacity="0.25" stroke="#3DBE6A" stroke-width="2"/>
+
+              <!-- TAM label -->
+              <text x="210" y="38" text-anchor="middle" fill="#14233B" font-size="13" font-weight="700" font-family="Unbounded, sans-serif">TAM</text>
+              <text x="210" y="56" text-anchor="middle" fill="#1E7A46" font-size="12" font-weight="600" font-family="Golos Text, sans-serif">1,19 трлн сум</text>
+              <text x="210" y="72" text-anchor="middle" fill="#14233B" font-size="10" font-family="Golos Text, sans-serif">395 559 хозяйств</text>
+
+              <!-- SAM label -->
+              <text x="210" y="110" text-anchor="middle" fill="#14233B" font-size="12" font-weight="700" font-family="Unbounded, sans-serif">SAM</text>
+              <text x="210" y="126" text-anchor="middle" fill="#1E7A46" font-size="11" font-weight="600" font-family="Golos Text, sans-serif">300 млрд сум</text>
+              <text x="210" y="140" text-anchor="middle" fill="#14233B" font-size="9.5" font-family="Golos Text, sans-serif">~100 000 хозяйств</text>
+
+              <!-- SOM label -->
+              <text x="210" y="196" text-anchor="middle" fill="#14233B" font-size="11" font-weight="700" font-family="Unbounded, sans-serif">SOM</text>
+              <text x="210" y="213" text-anchor="middle" fill="#1E7A46" font-size="12" font-weight="600" font-family="Golos Text, sans-serif">4,5 млрд сум</text>
+              <text x="210" y="229" text-anchor="middle" fill="#14233B" font-size="9.5" font-family="Golos Text, sans-serif">1 500 подп. / 3 года</text>
+            </svg>
+          </figure>
+
+          <div class="market__legend">
+            <div class="market__legend-item">
+              <div class="market__legend-dot market__legend-dot--tam"></div>
+              <div>
+                <strong>TAM — Общий рынок</strong>
+                <p>1,19 трлн сум</p>
+                <p class="market__legend-sub">395 559 фермерских хозяйств<br><em>Нацстатком, 01.01.2026</em></p>
+              </div>
+            </div>
+            <div class="market__legend-item">
+              <div class="market__legend-dot market__legend-dot--sam"></div>
+              <div>
+                <strong>SAM — Доступный рынок</strong>
+                <p>300 млрд сум</p>
+                <p class="market__legend-sub">~100 000 овощных, плодовых<br>и тепличных хозяйств</p>
+              </div>
+            </div>
+            <div class="market__legend-item">
+              <div class="market__legend-dot market__legend-dot--som"></div>
+              <div>
+                <strong>SOM — Реальная доля</strong>
+                <p>4,5 млрд сум</p>
+                <p class="market__legend-sub">1 500 платных подписчиков<br>за 3 года</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BUSINESS MODEL ===== -->
+    <section class="section biz" id="biz" aria-labelledby="bizTitle">
+      <div class="container">
+        <div class="section-label">Бизнес-модель</div>
+        <h2 class="section-title" id="bizTitle">Простая и масштабируемая</h2>
+
+        <div class="biz__cards">
+          <div class="biz-card">
+            <div class="biz-card__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="18" rx="3" stroke="#1E7A46" stroke-width="1.5"/><path d="M4 14h24" stroke="#1E7A46" stroke-width="1.5"/><circle cx="10" cy="20" r="2" fill="#3DBE6A"/></svg>
+            </div>
+            <div class="biz-card__tag">Подписка</div>
+            <div class="biz-card__price">300 000 <span>сум/мес</span></div>
+            <p class="biz-card__desc">Ежемесячная подписка. Неограниченные диагнозы для одного хозяйства.</p>
+          </div>
+
+          <div class="biz-card biz-card--featured">
+            <div class="biz-card__badge">Основная</div>
+            <div class="biz-card__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" stroke="#FBFCF8" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="biz-card__tag">Годовая подписка</div>
+            <div class="biz-card__price">3 000 000 <span>сум/год</span></div>
+            <p class="biz-card__desc">Экономия <strong>600 000 сум</strong> по сравнению с месячной оплатой.</p>
+          </div>
+
+          <div class="biz-card biz-card--next">
+            <div class="biz-card__tag">Следующий этап</div>
+            <div class="biz-card__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 8h16M8 16h10M8 24h6" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round"/><circle cx="24" cy="24" r="6" stroke="#3DBE6A" stroke-width="1.5"/><path d="M22 24l1.5 1.5 3-3" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="biz-card__price">$0,05 <span>/ запрос</span></div>
+            <p class="biz-card__desc">API для агрострахования, агрегаторов и B2B-партнёров.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ROADMAP ===== -->
+    <section class="section roadmap" id="roadmap" aria-labelledby="roadmapTitle">
+      <div class="container">
+        <div class="section-label">Roadmap</div>
+        <h2 class="section-title" id="roadmapTitle">План на 12 месяцев</h2>
+
+        <ol class="timeline" role="list">
+          <li class="timeline__item">
+            <div class="timeline__period">1–3 месяц</div>
+            <div class="timeline__content">
+              <h3>Разработка</h3>
+              <ul>
+                <li>Мобильное приложение (iOS + Android)</li>
+                <li>Модель 39 классов (добавление класса «Не лист»)</li>
+              </ul>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__period">4–6 месяц</div>
+            <div class="timeline__content">
+              <h3>Запуск</h3>
+              <ul>
+                <li>Публикация в Google Play и App Store</li>
+                <li>Пилотные проекты с хозяйствами</li>
+              </ul>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__period">7–9 месяц</div>
+            <div class="timeline__content">
+              <h3>Монетизация</h3>
+              <ul>
+                <li>Запуск платной подписки</li>
+                <li>Подписание B2B-договоров</li>
+              </ul>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__period">10–12 месяц</div>
+            <div class="timeline__content">
+              <h3>Масштабирование</h3>
+              <ul>
+                <li>Бета-версия API</li>
+                <li>300 платных подписчиков</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== TEAM ===== -->
+    <section class="section team" id="team" aria-labelledby="teamTitle">
+      <div class="container">
+        <div class="section-label">Команда</div>
+        <h2 class="section-title" id="teamTitle">Люди, которые строят PlantAI</h2>
+
+        <div class="team__grid">
+          <div class="team-card">
+            <div class="team-card__photo-wrap">
+              <img class="team-card__photo"
+                   src="assets/team/abduaziz.png"
+                   alt="Доспанов Абдуазиз"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   loading="lazy" />
+              <div class="team-card__initials" style="display:none" aria-hidden="true">АД</div>
+            </div>
+            <div class="team-card__socials">
+              <a href="https://t.me/abduaziz_dospanov_ai" target="_blank" rel="noopener noreferrer" class="team-card__social" aria-label="Telegram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21.8 4.4L18.3 20c-.3 1.1-1 1.4-2 .9l-5.5-4-2.6 2.5c-.3.3-.6.4-.9.4l.3-5.5 8.3-7.5c.4-.3 0-.5-.5-.2L6 15.5l-5.3-1.7c-1.1-.4-1.1-1 .2-1.5L20.1 2.9c1 .4 1.9 1 1.7 1.5z" fill="currentColor"/></svg>
+              </a>
+              <a href="https://instagram.com/abduazizdospanov_ai" target="_blank" rel="noopener noreferrer" class="team-card__social" aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+            <h3 class="team-card__name">Доспанов Абдуазиз</h3>
+            <div class="team-card__role">Лидер &amp; ML-инженер &amp; маркетолог</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-card__photo-wrap">
+              <img class="team-card__photo"
+                   src="assets/team/azatbek.png"
+                   alt="Утемаганбетов Азатбек"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   loading="lazy" />
+              <div class="team-card__initials" style="display:none" aria-hidden="true">УА</div>
+            </div>
+            <h3 class="team-card__name">Утемаганбетов Азатбек</h3>
+            <div class="team-card__role">Backend-разработчик &amp; сбор данных</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-card__photo-wrap">
+              <img class="team-card__photo"
+                   src="assets/team/salamat.png"
+                   alt="Айтмуратов Саламат"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                   loading="lazy" />
+              <div class="team-card__initials" style="display:none" aria-hidden="true">АС</div>
+            </div>
+            <h3 class="team-card__name">Айтмуратов Саламат</h3>
+            <div class="team-card__role">Frontend-разработчик &amp; сбор данных</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INVEST ===== -->
+    <section class="section invest" id="invest" aria-labelledby="investTitle">
+      <div class="container">
+        <div class="section-label">Инвестиции</div>
+        <h2 class="section-title" id="investTitle">Мы ищем партнёра</h2>
+
+        <div class="invest__ask">
+          <div class="invest__amount">$50 000</div>
+          <p class="invest__sub">Инвестиционный раунд Pre-Seed</p>
+        </div>
+
+        <div class="invest__breakdown">
+          <h3 class="invest__breakdown-title">Распределение средств</h3>
+          <div class="invest__bars" role="list" aria-label="Распределение инвестиций">
+            <div class="invest__bar-item" role="listitem">
+              <div class="invest__bar-label">
+                <span>Разработка</span>
+                <strong>$20 000</strong>
+              </div>
+              <div class="invest__bar-track" aria-hidden="true">
+                <div class="invest__bar-fill" style="--pct: 40%" data-pct="40"></div>
+              </div>
+            </div>
+            <div class="invest__bar-item" role="listitem">
+              <div class="invest__bar-label">
+                <span>Команда и операционные расходы</span>
+                <strong>$15 000</strong>
+              </div>
+              <div class="invest__bar-track" aria-hidden="true">
+                <div class="invest__bar-fill" style="--pct: 30%" data-pct="30"></div>
+              </div>
+            </div>
+            <div class="invest__bar-item" role="listitem">
+              <div class="invest__bar-label">
+                <span>Маркетинг и пилоты</span>
+                <strong>$10 000</strong>
+              </div>
+              <div class="invest__bar-track" aria-hidden="true">
+                <div class="invest__bar-fill" style="--pct: 20%" data-pct="20"></div>
+              </div>
+            </div>
+            <div class="invest__bar-item" role="listitem">
+              <div class="invest__bar-label">
+                <span>Инфраструктура</span>
+                <strong>$5 000</strong>
+              </div>
+              <div class="invest__bar-track" aria-hidden="true">
+                <div class="invest__bar-fill" style="--pct: 10%" data-pct="10"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="invest__breakeven">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z" fill="#3DBE6A" opacity="0.3" stroke="#3DBE6A" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <p>Точка безубыточности — <strong>~180 платных подписчиков</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="contact" aria-labelledby="contactTitle">
+      <div class="container">
+        <div class="section-label">Контакты</div>
+        <h2 class="section-title" id="contactTitle">Давайте поговорим</h2>
+
+        <div class="contact__inner">
+          <div class="contact__info">
+            <p class="contact__intro">Если вас интересует инвестиционное сотрудничество или у вас есть вопросы — напишите нам любым удобным способом.</p>
+
+            <ul class="contact__links" role="list">
+              <li>
+                <a href="https://t.me/abduaziz_dospanov_ai" class="contact__link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.8 4.4L18.3 20c-.3 1.1-1 1.4-2 .9l-5.5-4-2.6 2.5c-.3.3-.6.4-.9.4l.3-5.5 8.3-7.5c.4-.3 0-.5-.5-.2L6 15.5l-5.3-1.7c-1.1-.4-1.1-1 .2-1.5L20.1 2.9c1 .4 1.9 1 1.7 1.5z" fill="#1E7A46"/></svg>
+                  @abduaziz_dospanov_ai
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/abduazizdospanov_ai" class="contact__link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="6" stroke="#1E7A46" stroke-width="1.5"/>
+                    <circle cx="12" cy="12" r="4.5" stroke="#1E7A46" stroke-width="1.5"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="#1E7A46"/>
+                  </svg>
+                  @abduazizdospanov_ai
+                </a>
+              </li>
+              <li>
+                <a href="https://mail.google.com/mail/?view=cm&to=abduazizdospanov97@gmail.com" class="contact__link" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3" stroke="#1E7A46" stroke-width="1.5"/><path d="M2 8l10 7 10-7" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  abduazizdospanov97@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+998930810561" class="contact__link" aria-label="Телефон">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 006.6 6.6l2.2-2.2a1 1 0 011-.2 11.5 11.5 0 003.6.6 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.6 3.6a1 1 0 01-.2 1L6.6 10.8z" stroke="#1E7A46" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  +998 93 081 05 61
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact form -->
+          <form class="contact-form" id="contactForm" novalidate aria-label="Форма обратной связи">
+            <!-- Honeypot field (anti-spam) -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="hp_website">Сайт (не заполняйте)</label>
+              <input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="name">Ваше имя <span aria-hidden="true">*</span></label>
+              <input class="form-input"
+                     type="text"
+                     id="name"
+                     name="name"
+                     required
+                     minlength="2"
+                     maxlength="100"
+                     autocomplete="name"
+                     aria-required="true"
+                     aria-describedby="nameError"
+                     placeholder="Иван Иванов" />
+              <span class="form-error" id="nameError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="company">Компания / организация</label>
+              <input class="form-input"
+                     type="text"
+                     id="company"
+                     name="company"
+                     maxlength="150"
+                     autocomplete="organization"
+                     placeholder="AgriVentures Ltd." />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Сообщение <span aria-hidden="true">*</span></label>
+              <textarea class="form-input form-textarea"
+                        id="message"
+                        name="message"
+                        required
+                        minlength="10"
+                        maxlength="2000"
+                        rows="5"
+                        aria-required="true"
+                        aria-describedby="messageError"
+                        placeholder="Расскажите о себе и своём интересе к PlantAI…"></textarea>
+              <span class="form-error" id="messageError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <button class="btn btn--primary btn--full" type="submit" id="submitBtn">
+              <span class="btn__text">Отправить сообщение</span>
+              <span class="btn__spinner" aria-hidden="true"></span>
+            </button>
+
+            <div class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#hero" class="logo footer__logo" aria-label="PlantAI — наверх">
+        <svg class="logo__icon" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 4C16 4 7 10 7 18a9 9 0 0018 0C25 10 16 4 16 4z" fill="#1E7A46"/>
+          <path d="M16 4C16 4 16 14 16 22" stroke="#3DBE6A" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="logo__text">PlantAI</span>
+      </a>
+      <p class="footer__copy">&copy; 2026 PlantAI. Все права защищены.</p>
+      <p class="footer__made">Узбекистан, Каракалпакстан</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

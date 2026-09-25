@@ -1,0 +1,17 @@
+# Claude
+.claude/
+
+# Env
+.env
+.env.local
+.env*.local
+
+# Vercel
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/

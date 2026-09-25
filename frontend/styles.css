@@ -401,6 +401,28 @@ input, textarea { font-family: inherit; font-size: 1rem; }
 .problem__big-stat p { font-size: 1rem; color: var(--ink); line-height: 1.5; }
 .problem__source { font-size: 0.85rem; color: var(--muted); display: block; margin-top: 8px; }
 
+.problem__solutions { display: flex; flex-direction: column; gap: 0; }
+.problem__intro-text { font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+.problem__solutions-title {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+.problem__conclusion {
+  margin-top: 20px;
+  font-size: 0.92rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+  padding: 16px 20px;
+  background: rgba(224,82,82,.05);
+  border-left: 3px solid rgba(224,82,82,.4);
+  border-radius: 0 8px 8px 0;
+}
 .problem__list { display: flex; flex-direction: column; gap: 24px; }
 .problem__item {
   display: flex;
@@ -573,6 +595,48 @@ input, textarea { font-family: inherit; font-size: 1rem; }
 .results__indev p { font-size: 0.95rem; color: rgba(255,255,255,.75); line-height: 1.6; }
 .results__indev strong { color: #fff; }
 
+/* ===== INTEREST ===== */
+.interest__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+@media (min-width: 600px) { .interest__grid { grid-template-columns: repeat(3, 1fr); } }
+
+.interest-card {
+  background: #fff;
+  border: 1.5px solid rgba(30,122,70,.12);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.interest-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(30,122,70,.10);
+}
+.interest-card__icon {
+  width: 56px; height: 56px;
+  background: rgba(30,122,70,.07);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.interest-card__title {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.interest-card__desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 /* ===== MARKET ===== */
 .market__inner {
   display: grid;
@@ -667,6 +731,30 @@ input, textarea { font-family: inherit; font-size: 1rem; }
 .biz-card--featured .biz-card__price { color: #fff; }
 .biz-card__price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
 .biz-card__desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+.biz-card__features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+.biz-card__features li {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+}
+.biz-card__features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+.biz-card--featured .biz-card__features li { color: rgba(255,255,255,.8); }
+.biz-card--featured .biz-card__features li::before { color: #7fffa0; }
+.biz-card--featured .biz-card__features strong { color: #fff; }
 
 /* ===== ROADMAP ===== */
 .timeline {
@@ -762,6 +850,9 @@ input, textarea { font-family: inherit; font-size: 1rem; }
   border-radius: var(--radius-lg);
   border: 1.5px solid var(--border);
   transition: box-shadow var(--transition), transform var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .team-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
 
@@ -782,8 +873,13 @@ input, textarea { font-family: inherit; font-size: 1rem; }
 .team-card__photo {
   width: 100%; height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   border-radius: 50%;
   display: block;
+}
+.team-card__photo--janpolat {
+  object-position: center 30%;
+  scale: 0.85;
 }
 
 .team-card__initials {
@@ -949,7 +1045,9 @@ input, textarea { font-family: inherit; font-size: 1rem; }
   white-space: nowrap;
 }
 
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-hint { font-size: 0.82rem; color: var(--muted); text-align: center; margin-top: -8px; }
 .form-label { font-size: 0.9rem; font-weight: 600; color: var(--ink); }
 .form-label span { color: var(--error); }
 
@@ -1232,6 +1330,7 @@ input, textarea { font-family: inherit; font-size: 1rem; }
 .problem,
 .how,
 .results,
+.interest,
 .market,
 .biz,
 .roadmap,

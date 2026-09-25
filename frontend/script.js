@@ -198,9 +198,7 @@ function initReveal() {
   sections.forEach(s => observer.observe(s));
 })();
 
-/* ===== CONTACT FORM — Formspree ===== */
-const FORMSPREE_URL = 'https://formspree.io/f/xbglkknv';
-
+/* ===== CONTACT FORM — mailto ===== */
 (function () {
   const form      = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
@@ -227,6 +225,7 @@ const FORMSPREE_URL = 'https://formspree.io/f/xbglkknv';
   }
 
   const nameInput    = form.querySelector('#name');
+  const companyInput = form.querySelector('#company');
   const messageInput = form.querySelector('#message');
 
   nameInput.addEventListener('blur', () =>
@@ -236,10 +235,9 @@ const FORMSPREE_URL = 'https://formspree.io/f/xbglkknv';
     setError(messageInput, 'messageError', validateMessage(messageInput.value))
   );
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Honeypot — bot bo'lsa, jim rad etiladi
     const hp = form.querySelector('#hp_website');
     if (hp && hp.value) return;
 
@@ -253,42 +251,15 @@ const FORMSPREE_URL = 'https://formspree.io/f/xbglkknv';
       return;
     }
 
-    submitBtn.classList.add('btn--loading');
-    submitBtn.disabled = true;
-    status.className   = 'form-status';
-    status.textContent = '';
+    const company = companyInput ? companyInput.value.trim() : '';
+    const subject = encodeURIComponent('PlantAI: сообщение от ' + (company || nameInput.value.trim()));
+    const body    = encodeURIComponent(
+      'Сообщение:\n' + messageInput.value.trim() +
+      '\n\nИмя: ' + nameInput.value.trim() +
+      (company ? '\nКомпания: ' + company : '')
+    );
 
-    try {
-      const res = await fetch(FORMSPREE_URL, {
-        method:  'POST',
-        headers: { 'Accept': 'application/json' },
-        body:    new FormData(form),
-      });
-
-      if (res.ok) {
-        status.textContent = '✓ Сообщение отправлено! Мы свяжемся с вами в ближайшее время.';
-        status.className   = 'form-status success';
-        form.reset();
-        form.querySelectorAll('.form-input').forEach(i => {
-          i.classList.remove('error');
-          i.removeAttribute('aria-invalid');
-        });
-        form.querySelectorAll('.form-error').forEach(el => (el.textContent = ''));
-      } else {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Ошибка сервера');
-      }
-    } catch (err) {
-      status.textContent =
-        err.message === 'Failed to fetch'
-          ? 'Нет соединения. Проверьте интернет и попробуйте ещё раз.'
-          : 'Не удалось отправить. Напишите нам напрямую в Telegram: @abduaziz_dospanov_ai';
-      status.className = 'form-status error-msg';
-    } finally {
-      submitBtn.classList.remove('btn--loading');
-      submitBtn.disabled = false;
-      status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    window.location.href = 'mailto:abduazizdospanov97@gmail.com?subject=' + subject + '&body=' + body;
   });
 })();
 
@@ -301,6 +272,7 @@ const FORMSPREE_URL = 'https://formspree.io/f/xbglkknv';
     '.how__step',
     '.result-card',
     '.results__indev',
+    '.interest-card',
     '.market__diagram',
     '.market__legend-item',
     '.biz-card',
